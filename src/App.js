@@ -1,4 +1,4 @@
-import quotes from './assets/quotes.json'
+
 import './App.css';
 import './backgrounds.css';
 import Quotebox from './components/Quotebox/Quotebox.js';
