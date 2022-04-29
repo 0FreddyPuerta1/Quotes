@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import quotes from './assets/quotes.json'
 import './App.css';
-
+import './backgrounds.css';
+import Quotebox from './components/Quotebox/Quotebox.js';
+import { useState } from 'react';
+import colors from './assets/colors.json'
 function App() {
+  const randomNumber = Math.random()
+  console.log(randomNumber)
+  const [i, setI] = useState(randomNumber);
+
+  const newI = () => {
+    const randomNumber = Math.random()
+    setI(randomNumber)
+  }
+
+  const bgColor = colors[Math.floor(i * colors.length)]["color"]
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`App ${bgColor}-color`}>
+      <div className='title'>
+        <h1>Quotes Machine</h1>
+      </div>
+      
+      <Quotebox i={i} next={newI}
+      />
     </div>
   );
 }
